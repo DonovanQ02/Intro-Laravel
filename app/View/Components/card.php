@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\View\Components;
@@ -26,3 +27,4 @@ class card extends Component
         return view('components.card');
     }
 }
+
