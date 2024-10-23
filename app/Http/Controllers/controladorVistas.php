@@ -20,10 +20,10 @@ class controladorVistas extends Controller
 
     public function procesarCliente(Request $peticion){
         $validated = $peticion -> validate([ 
-            'txtnombre' => 'required',
-            'txtapellido' => 'required',
-            'txtcorreo' => 'required',
-            'txttelefono'=> 'required'
+            'txtnombre' => 'required|min:5|max:255',
+            'txtapellido' => 'required|min:5|max:255',
+            'txtcorreo' => 'required|email',
+            'txttelefono'=> 'required|numeric'
         ]);
 
         //return $peticion -> all();
