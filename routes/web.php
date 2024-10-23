@@ -3,19 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorVistas;
 
+// Rutas de tu aplicación
+Route::get('/', [controladorVistas::class, 'home'])->name('inicio');
+Route::get('/formulario', [controladorVistas::class, 'mostrarformulario'])->name('formulario');
 
-
-Route::get('/', [controladorVistas::class, 'home']) -> name('inicio');
-Route::get('/form', [controladorVistas::class, 'formulario']) -> name('formulario');
-Route::get('/client', [controladorVistas::class, 'consulta']) -> name('cliente');
-
-route::view('/component', 'componentes') -> name('componentes');
-
-route::post('/enviarCliente', [controladorVistas::class, 'procesarCliente']) -> name('enviar');
-
-
-/* route::view('/', 'inicio') -> name('inicio');
-route::view('/form', 'formulario')-> name('formulario');
-route::view('/client', 'cliente') -> name('cliente');
- */
-//laravel sniped
+// Aquí se llama al método 'convertirUnidades' en lugar de 'repaso1'
+Route::get('/cliente', [controladorVistas::class, 'consulta'])->name('cliente');
+Route::post('/enviarCliente', [controladorVistas::class, 'procesarcliente'])->name('enviarCliente');
