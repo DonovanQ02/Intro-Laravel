@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\validadorClientes;
+
 class controladorVistas extends Controller
 {
     public function home(){
@@ -18,13 +20,8 @@ class controladorVistas extends Controller
         return view('cliente');
     }
 
-    public function procesarCliente(Request $peticion){
-        $validated = $peticion -> validate([ 
-            'txtnombre' => 'required|min:5|max:255',
-            'txtapellido' => 'required|min:5|max:255',
-            'txtcorreo' => 'required|email',
-            'txttelefono'=> 'required|numeric'
-        ]);
+    public function procesarCliente(validadorClientes $peticionValidada){
+
 
         //return $peticion -> all();
         //return $peticion -> path();
@@ -38,7 +35,7 @@ class controladorVistas extends Controller
         //redireccion al origen
         //return back();
 
-        $usuario = $peticion->input('txtnombre');
+        $usuario = $peticionValidada->input('txtnombre');
 
         session()->flash('exito', 'se guardo el usuario '.$usuario);
         return to_route('formulario');

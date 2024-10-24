@@ -15,6 +15,17 @@
 
         @endsession
 
+        @session('exito')
+        <script>
+            Swal.fire({
+                title: "respuesta del servidor",
+                text: "{{$value}}",
+                icon: "success"
+            });
+        </script>
+
+        @endsession
+
         <div class="card font-monospace">
             <div class="card-header fs-5 text-center text-primary">
                 Registro de Clientes
@@ -24,24 +35,24 @@
                     @csrf 
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" name="txtnombre">
+                        <input type="text" class="form-control" name="txtnombre" value="{{old('txtnombre')}}">
                         <small>{{ $errors->first('txtnombre') }}</small>
                     </div>
                     <div class="mb-3">
                         <label for="apellido" class="form-label">Apellido:</label>
-                        <input type="text" class="form-control" name="txtapellido">
+                        <input type="text" class="form-control" name="txtapellido" value="{{old('txtapellido')}}">
                         <small>{{ $errors->first('txtapellido') }}</small>
 
                     </div>
                     <div class="mb-3">
                         <label for="correo" class="form-label">Correo:</label>
-                        <input type="text" class="form-control" name="txtcorreo">
+                        <input type="text" class="form-control" name="txtcorreo" value="{{old('txtcorreo')}}">
                         <small>{{ $errors->first('txtcorreo') }}</small>
 
                     </div>
                     <div class="mb-3">
                         <label for="telefono" class="form-label">Teléfono:</label>
-                        <input type="text" class="form-control" name="txttelefono">
+                        <input type="text" class="form-control" name="txttelefono" value="{{old('txttelefono')}}">
                         <small>{{ $errors->first('txttelefono') }}</small>
 
                     </div>
